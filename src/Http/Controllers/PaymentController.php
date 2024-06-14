@@ -8,7 +8,6 @@ use Stripe\Stripe;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Sales\Repositories\InvoiceRepository;
 use Webkul\Sales\Repositories\OrderRepository;
-use Webkul\Sales\Transformers\OrderResource;
 
 class PaymentController extends Controller
 {
@@ -66,11 +65,7 @@ class PaymentController extends Controller
      */
     public function success(): RedirectResponse
     {
-        $cart = Cart::getCart();
-
-        $data = (new OrderResource($cart))->jsonSerialize();
-
-        $order = $this->orderRepository->create($data);
+        $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
         if ($order->canInvoice()) {
             $this->invoiceRepository->create($this->prepareInvoiceData($order));
