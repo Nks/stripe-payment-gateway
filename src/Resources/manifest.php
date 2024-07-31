@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'name'    => 'Codenteq Stripe Payment',
+    'name' => 'Codenteq Stripe Payment',
     'version' => core()->version(),
 ];

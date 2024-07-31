@@ -11,11 +11,11 @@ class StripeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadRoutesFrom(__DIR__.'/../Routes/shop-routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/shop-routes.php');
 
-        $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'stripe');
+        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'stripe');
 
-        $this->loadViewsFrom(__DIR__.'/../Resources/views', 'stripe');
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'stripe');
     }
 
     /**
@@ -32,11 +32,11 @@ class StripeServiceProvider extends ServiceProvider
     protected function registerConfig(): void
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__).'/Config/paymentmethods.php', 'payment_methods'
+            dirname(__DIR__) . '/Config/paymentmethods.php', 'payment_methods'
         );
 
         $this->mergeConfigFrom(
-            dirname(__DIR__).'/Config/system.php', 'core'
+            dirname(__DIR__) . '/Config/system.php', 'core'
         );
     }
 }
